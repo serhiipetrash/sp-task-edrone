@@ -5,20 +5,23 @@ defineProps({
   idMeal: String
 })
 
+
 </script>
+
 <template>
-  <div class="meal">
+  <div class="meal" data-mealID="{{ idMeal }}">
     <img :src="strMealThumb" :alt="strMeal" />
-    <div class="meal-info" data-mealID="{{ idMeal }}">
+    <div class="meal-info">
       <h3>{{ strMeal }}</h3>
     </div>
+    <span>{{ idMeal }}</span>
   </div>
 </template>
 
-<style scoped>
+<style >
 .meal {
   cursor: pointer;
-  position: relative;
+  /* position: relative; */
   max-height: 340px;
   width: 280px;
   text-align: center;
@@ -35,5 +38,9 @@ defineProps({
 
 .meal-info h3 {
   padding: 0.5rem;
+}
+
+.meal span {
+  display: none;
 }
 </style>

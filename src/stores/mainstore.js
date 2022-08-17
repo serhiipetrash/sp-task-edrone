@@ -5,15 +5,16 @@ export const useStore = defineStore('main', {
     term: 'Soup',
     posts: [],
     error: null,
-    mealID: 52973,
+    mealID: null,
     meal: [],
     ingredients: [],
+    templateURL: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
+    templateURLid: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
+    fullURL: null,
   }),
   getters: {
     getURL: (state) => {
-      const templateURL =
-        'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-      return templateURL + state.term;
+      return state.templateURL + state.term;
     },
   },
   actions: {
@@ -26,21 +27,14 @@ export const useStore = defineStore('main', {
         this.error = err.message;
       }
     },
-    async getMealById() {
-      fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52973')
+    getMealById() {
+      this.ingredients = [];
+      // const url = this.templateURL + this.mealID;
+      const url = this.fullURL;
+      fetch(url)
         .then((res) => res.json())
         .then((data) => {
           this.meal = data.meals[0];
-          // console.log(data.meals[0]);
-          // console.log(this.meal);
-
-          // console.log(this.meal.strIngredient1);
-          // console.log(this.meal.strIngredient2);
-          // console.log(this.meal.strIngredient3);
-          // let i = 3;
-          // console.log(this.meal[`strIngredient${i}`]);
-
-          // const ingredients = [];
 
           for (let i = 1; i <= 20; i++) {
             if (this.meal[`strIngredient${i}`]) {
@@ -53,8 +47,25 @@ export const useStore = defineStore('main', {
               break;
             }
           }
-          console.log(this.ingredients);
         });
+    },
+    mealsEl(e) {
+      // console.log(e);
+      const mealInfo = e.path.find((item) => {
+        if (item.classList) {
+          return item.classList.contains('meal');
+        } else {
+          return false;
+        }
+      });
+      // console.log(mealInfo);
+      if (mealInfo) {
+        this.mealID = mealInfo.querySelector('span').innerText;
+        this.fullURL = this.templateURLid + this.mealID;
+        this.getMealById(this.fullURL);
+        console.log(this.mealID);
+        // console.log(this.fullURL);
+      }
     },
   },
 });

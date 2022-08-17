@@ -5,13 +5,15 @@ const single = useStore()
 
 single.getMealById()
 
-console.log(single.meal.strIngredient1);
 </script>
 
 <template>
 
   <div class="single-meal">
+    <!-- {{ single.meal.strYoutube }} -->
 
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BgRifcCwinY" title="YouTube video player"
+      frameborder="0" allowfullscreen></iframe> -->
     <img :src="single.meal.strMealThumb" :alt="single.meal.strMeal" />
     <div class="single-meal-info">
       <h2>Instruction</h2>
@@ -31,18 +33,28 @@ console.log(single.meal.strIngredient1);
 <style scoded>
 .single-meal {
   position: absolute;
-  background-color: rgba(233, 229, 229, 0.8);
+  top: 10%;
+  left: 1rem;
+  background-color: rgba(233, 229, 229, 0.9);
   display: flex;
+  border-radius: 0.5rem;
+  box-shadow: 2px 4px 8px #82766a;
 }
 
 .single-meal img {
   width: 300px;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .single-meal-info {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.5rem;
+}
+
+.single-meal-info h2:nth-child(3) {
+  margin: 1rem;
 }
 
 .single-meal p {
