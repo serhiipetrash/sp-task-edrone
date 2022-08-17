@@ -12,6 +12,7 @@ export const useStore = defineStore('main', {
     templateURLid: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
     fullURL: null,
     showSingle: false,
+    catList: [],
   }),
   getters: {
     getURL: (state) => {
@@ -25,6 +26,18 @@ export const useStore = defineStore('main', {
         const result = await fetch(url);
         const data = await result.json();
         this.posts = data;
+
+        // console.log(this.posts.meals[0].strCategory);
+        const testList = [];
+        for (let i = 0; i < this.posts.meals.length; i++) {
+          testList.push(this.posts.meals[i].strCategory);
+        }
+        //get unique category list
+        const uniqueList = [...new Set(testList)];
+        this.catList = [...uniqueList];
+        console.log(this.catList);
+        // console.log(testList);
+        // console.log(uniqueList);
       } catch (err) {
         this.error = err.message;
       }
@@ -65,7 +78,7 @@ export const useStore = defineStore('main', {
         this.mealID = mealInfo.querySelector('span').innerText;
         this.fullURL = this.templateURLid + this.mealID;
         this.getMealById(this.fullURL);
-        console.log(this.mealID);
+        // console.log(this.mealID);
         // console.log(this.fullURL);
       }
     },

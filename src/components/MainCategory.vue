@@ -1,18 +1,28 @@
+<script setup>
+import { useCategory } from '../stores/category';
+const catStore = useCategory()
+catStore.fetchCategory()
+
+import { useStore } from '../stores/mainstore';
+const search = useStore()
+
+</script>
+
 <template>
   <div class="container">
 
     <div class="item-body">
       <h2 class="item-title">Category</h2>
-      <div class="item-container">
+      <div class="item-container" @click="catStore.findCategory">
         <ul>
-          <li><span>&times;</span> vegetarian</li>
-          <li><span>&times;</span> food</li>
-          <li><span>&times;</span> desert</li>
+          <li class="catitem" v-for="item in search.catList">
+            &times;<span>{{ item }}</span>
+          </li>
         </ul>
       </div>
     </div>
 
-        <div class="item-body">
+    <div class="item-body">
       <h2 class="item-title">Area</h2>
       <div class="item-container">
         <ul>
@@ -23,7 +33,7 @@
       </div>
     </div>
 
-        <div class="item-body">
+    <div class="item-body">
       <h2 class="item-title">Tags</h2>
       <div class="item-container">
         <ul>
@@ -44,9 +54,11 @@
   background-color: #b7b7b7;
   padding: 1rem;
 }
+
 .item-title {
   margin: 1rem 0;
 }
+
 .item-container ul {
   padding-left: 0;
   list-style-type: none;

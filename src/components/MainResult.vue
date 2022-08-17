@@ -13,7 +13,7 @@ const search = useStore()
 // const { data, error } = useFetch(search.getURL)
 
 search.myFetch(search.getURL)
-// search.mealsEl()
+
 
 </script>
 
