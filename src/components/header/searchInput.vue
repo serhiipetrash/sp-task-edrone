@@ -1,25 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { useStore } from '../../stores/mainstore';
 import searchIcon from '../icons/searchIcon.vue';
 
-const term = ref('Soup')
-
-function onSubmit() {
-  const search = term.value
-  console.log(search)
-
-}
+const search = useStore()
 
 </script>
+
 <template>
-  <form class="search" id="submit">
-    <button class="search-btn" type="submit" @click.prevent="onSubmit">
+
+  <form class="search" id="submit" @submit.prevent="search.myFetch(search.getURL)">
+    <button class="search-btn" @click="search.myFetch(search.getURL)">
       <i>
         <searchIcon />
       </i>
 
     </button>
-    <input type="text" id="search" placeholder="SEARCH" v-model.trim="term" />
+    <input type="text" id="search" placeholder="SEARCH" v-model.trim.lazy="search.term" />
 
   </form>
 </template>

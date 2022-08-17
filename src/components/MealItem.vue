@@ -19,7 +19,7 @@ defineProps({
 .meal {
   cursor: pointer;
   position: relative;
-  /* height: 280px; */
+  max-height: 340px;
   width: 280px;
   text-align: center;
   border: 1px solid #c6c6c6;
