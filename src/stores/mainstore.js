@@ -11,6 +11,7 @@ export const useStore = defineStore('main', {
     templateURL: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
     templateURLid: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
     fullURL: null,
+    showSingle: false,
   }),
   getters: {
     getURL: (state) => {
@@ -19,6 +20,7 @@ export const useStore = defineStore('main', {
   },
   actions: {
     async myFetch(url) {
+      this.showSingle = false;
       try {
         const result = await fetch(url);
         const data = await result.json();
@@ -50,7 +52,7 @@ export const useStore = defineStore('main', {
         });
     },
     mealsEl(e) {
-      // console.log(e);
+      this.showSingle = true;
       const mealInfo = e.path.find((item) => {
         if (item.classList) {
           return item.classList.contains('meal');

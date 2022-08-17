@@ -9,7 +9,7 @@ single.getMealById()
 
 <template>
 
-  <div class="single-meal">
+  <div class="single-meal" v-show="single.showSingle">
     <!-- {{ single.meal.strYoutube }} -->
 
     <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BgRifcCwinY" title="YouTube video player"
@@ -35,6 +35,7 @@ single.getMealById()
   position: absolute;
   top: 10%;
   left: 1rem;
+  right: 1rem;
   background-color: rgba(233, 229, 229, 0.9);
   display: flex;
   border-radius: 0.5rem;

@@ -28,6 +28,7 @@ search.myFetch(search.getURL)
     </div>
     <div v-else>Loading...</div>
 
+
     <SingleMeal />
   </div>
 
@@ -35,9 +36,9 @@ search.myFetch(search.getURL)
 </template>
 
 <style scoped>
-/* .container {
-  position: relative;
-} */
+.container {
+  width: 100%;
+}
 
 .result {
   display: grid;
