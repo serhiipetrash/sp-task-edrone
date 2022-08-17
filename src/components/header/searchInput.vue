@@ -1,16 +1,25 @@
 <script setup>
+import { ref } from 'vue';
 import searchIcon from '../icons/searchIcon.vue';
+
+const term = ref('Soup')
+
+function onSubmit() {
+  const search = term.value
+  console.log(search)
+
+}
 
 </script>
 <template>
   <form class="search" id="submit">
-    <button class="search-btn" type="submit">
+    <button class="search-btn" type="submit" @click.prevent="onSubmit">
       <i>
         <searchIcon />
       </i>
 
     </button>
-    <input type="text" id="search" placeholder="SEARCH" />
+    <input type="text" id="search" placeholder="SEARCH" v-model.trim="term" />
 
   </form>
 </template>
@@ -60,6 +69,7 @@ input[type='text']:focus {
   display: flex;
   align-items: center;
 }
+
 .search-btn i svg {
   width: 1rem;
   height: 1rem;

@@ -4,15 +4,9 @@ import MealItem from './MealItem.vue';
 import { useFetch } from './use/useFetch';
 
 const startURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=Soup'
+
 const { data, error } = useFetch(startURL)
 
-
-// const data = ref(null)
-// const error = ref(null)
-// fetch(startURL)
-//   .then((res) => res.json())
-//   .then((json) => (data.value = json))
-//   .catch((err) => (error.value = err))
 </script>
 
 <template>
