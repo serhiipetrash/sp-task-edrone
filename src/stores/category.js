@@ -4,7 +4,6 @@ export const useCategory = defineStore('category', {
   state: () => ({
     catFind: '',
     showCategory: true,
-    showFavorit: false,
   }),
   getters: {
     // toggleCategory: (state) => {
@@ -25,9 +24,6 @@ export const useCategory = defineStore('category', {
     // },
     toggleCategory() {
       this.showCategory = !this.showCategory;
-    },
-    toggleFavorit() {
-      this.showFavorit = !this.showFavorit;
     },
     findCategory(e) {
       const find = e.path.find((item) => {

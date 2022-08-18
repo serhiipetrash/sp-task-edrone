@@ -1,33 +1,42 @@
 <script setup>
 import FavouriteIcon from '../icons/favouriteIcon.vue';
-import { useCategory } from '@/stores/category';
-const catStore = useCategory()
+
+import { useStore } from '@/stores/mainstore';
+import { onMounted, ref } from 'vue';
+const search = useStore()
+const localArr = ref([])
+
+//Get favoritList from local storage
+const getFavoritList = () => {
+
+  const favoritArr = JSON.parse(localStorage.getItem('favoritList'));
+  // console.log(favoritArr);
+  return favoritArr === null ? [] : favoritArr;
+}
+localArr.value = getFavoritList()
+
 </script>
 
 <template>
   <div class="favoritContainer">
-    <button class="favourites" @click="catStore.toggleFavorit">
+    <button class="favourites" @click="search.toggleFavorit">
       <span>favourites</span>
       <i>
         <FavouriteIcon />
       </i>
     </button>
-    <div class="favoritList" v-if="catStore.showFavorit">
+    <div class="favoritList" v-if="search.showFavorit">
 
-      <div class="favoritItem">
-        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" alt="title">
-        <div class="favoritTitle">Teriyaki Chicken Casserole</div>
+      <div class="favoritItem" v-for="item in localArr">
+        <img :src="item.strMealThumb" alt="title">
+        <div class="favoritTitle">{{ item.strMeal }}</div>
+        <span>{{ item.idMeal }}</span>
       </div>
 
-      <div class="favoritItem">
+      <!-- <div class="favoritItem">
         <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" alt="title">
         <div class="favoritTitle">Teriyaki Chicken Casserole</div>
-      </div>
-
-      <div class="favoritItem">
-        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" alt="title">
-        <div class="favoritTitle">Teriyaki Chicken Casserole</div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -96,5 +105,9 @@ const catStore = useCategory()
 
 .favoritList .favoritItem .favoritTitle {
   text-transform: uppercase;
+}
+
+.favoritList .favoritItem span {
+  display: none;
 }
 </style>

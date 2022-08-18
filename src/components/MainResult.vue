@@ -1,10 +1,10 @@
 <script setup>
 
-import { useStore } from '../stores/mainstore';
 import MealItem from './MealItem.vue';
 import SingleMeal from './SingleMeal.vue';
 // import { useFetch } from './use/useFetch';
 
+import { useStore } from '../stores/mainstore';
 const search = useStore()
 
 

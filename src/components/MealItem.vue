@@ -1,4 +1,6 @@
 <script setup>
+
+import { ref } from 'vue';
 import { useStore } from '../stores/mainstore';
 const search = useStore()
 
@@ -8,12 +10,32 @@ const inputProps = defineProps({
   idMeal: String
 })
 
+const addToLocalFavList = []
+
 const addToFavoritList = () => {
   const { idMeal, strMeal, strMealThumb } = inputProps
-  search.favoritList.push({ idMeal, strMeal, strMealThumb })
-  // console.log(search.favoritList);
-  localStorage.setItem('favoritList', JSON.stringify(search.favoritList))
+  addToLocalFavList.push({ idMeal, strMeal, strMealThumb })
+
+  if (localStorage.getItem('favoritList') === null) {
+    localStorage.setItem('favoritList', JSON.stringify(addToLocalFavList))
+  } else {
+    const curent = JSON.parse(localStorage.getItem('favoritList'))
+    const mergedArr = [...addToLocalFavList, ...curent]
+    localStorage.setItem('favoritList', JSON.stringify(mergedArr))
+  }
+  window.location.reload();
+
+  // return addToLocalFavList;
 }
+
+// const addToFavoritList = () => {
+//   const { idMeal, strMeal, strMealThumb } = inputProps
+//   search.favoritList.push({ idMeal, strMeal, strMealThumb })
+//   // console.log(search.favoritList);
+//   localStorage.setItem('favoritList', JSON.stringify(search.favoritList))
+//   window.location.reload();
+// }
+
 
 </script>
 
@@ -25,7 +47,7 @@ const addToFavoritList = () => {
     </div>
     <span>{{ idMeal }}</span>
 
-    <b @click="addToFavoritList">&#9825;</b>
+    <b @click.stop="addToFavoritList">&#9825;</b>
 
   </div>
 </template>
