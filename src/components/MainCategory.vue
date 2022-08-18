@@ -1,7 +1,6 @@
 <script setup>
 import { useCategory } from '../stores/category';
 const catStore = useCategory()
-catStore.fetchCategory()
 
 import { useStore } from '../stores/mainstore';
 const search = useStore()
@@ -26,9 +25,9 @@ const search = useStore()
       <h2 class="item-title">Area</h2>
       <div class="item-container">
         <ul>
-          <li><span>&times;</span> stockholm</li>
-          <li><span>&times;</span> cracow</li>
-          <li><span>&times;</span> poland</li>
+          <li class="areaitem" v-for="item in search.areaList">
+            &times;<span>{{ item }}</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -37,9 +36,9 @@ const search = useStore()
       <h2 class="item-title">Tags</h2>
       <div class="item-container">
         <ul>
-          <li><span>&times;</span> vegetarian</li>
-          <li><span>&times;</span> food</li>
-          <li><span>&times;</span> poland</li>
+          <li class="tagsitem" v-for="item in search.tagsList">
+            &times;<span>{{ item }}</span>
+          </li>
         </ul>
       </div>
     </div>

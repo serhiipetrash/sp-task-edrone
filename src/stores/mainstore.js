@@ -13,6 +13,8 @@ export const useStore = defineStore('main', {
     fullURL: null,
     showSingle: false,
     catList: [],
+    areaList: [],
+    tagsList: [],
   }),
   getters: {
     getURL: (state) => {
@@ -27,17 +29,45 @@ export const useStore = defineStore('main', {
         const data = await result.json();
         this.posts = data;
 
-        // console.log(this.posts.meals[0].strCategory);
-        const testList = [];
+        // console.log(this.posts.meals[0]);
+
+        //get all category list
+        const allCatList = [];
         for (let i = 0; i < this.posts.meals.length; i++) {
-          testList.push(this.posts.meals[i].strCategory);
+          allCatList.push(this.posts.meals[i].strCategory);
         }
         //get unique category list
-        const uniqueList = [...new Set(testList)];
-        this.catList = [...uniqueList];
-        console.log(this.catList);
-        // console.log(testList);
-        // console.log(uniqueList);
+        const uniqueCatList = [...new Set(allCatList)];
+        this.catList = [...uniqueCatList];
+        // console.log(this.catList);
+
+        ///////////////////////////////////
+        //get all area list
+        const allAreaList = [];
+        for (let i = 0; i < this.posts.meals.length; i++) {
+          allAreaList.push(this.posts.meals[i].strArea);
+        }
+        //get unique area list
+        const uniqueAreaList = [...new Set(allAreaList)];
+        this.areaList = [...uniqueAreaList];
+        // console.log(this.areaList);
+
+        //////////////////////////////////
+        //get all tags list
+        const allTagsList = [];
+        for (let i = 0; i < this.posts.meals.length; i++) {
+          allTagsList.push(this.posts.meals[i].strTags);
+        }
+
+        const filterTagsList = allTagsList.filter((item) => {
+          return item !== null;
+        });
+
+        console.log(filterTagsList);
+        //get unique tags list
+        const uniqueTagsList = [...new Set(filterTagsList)];
+        this.tagsList = [...uniqueTagsList];
+        // console.log(this.tagsList);
       } catch (err) {
         this.error = err.message;
       }
