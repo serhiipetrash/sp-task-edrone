@@ -12,7 +12,6 @@ export const useStore = defineStore('main', {
     templateURLid: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
     fullURL: null,
     showSingle: false,
-    showFavorit: false,
     catList: [],
     areaList: [],
     tagsList: [],
@@ -112,10 +111,6 @@ export const useStore = defineStore('main', {
         // console.log(this.mealID);
         // console.log(this.fullURL);
       }
-    },
-    toggleFavorit() {
-      this.showFavorit = !this.showFavorit;
-      // console.log(this.favoritList);
     },
     getFavoritList() {
       const favoritArr = JSON.parse(localStorage.getItem('favoritList'));

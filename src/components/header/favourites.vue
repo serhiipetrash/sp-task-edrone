@@ -19,13 +19,13 @@ localArr.value = getFavoritList()
 
 <template>
   <div class="favoritContainer">
-    <button class="favourites" @click="search.toggleFavorit">
+    <button class="favourites">
       <span>favourites</span>
       <i>
         <FavouriteIcon />
       </i>
     </button>
-    <div class="favoritList" v-if="search.showFavorit">
+    <div class="favoritList">
 
       <div class="favoritItem" v-for="item in localArr">
         <img :src="item.strMealThumb" alt="title">
@@ -45,7 +45,6 @@ localArr.value = getFavoritList()
 <style scoped>
 .favoritContainer {
   position: relative;
-
 }
 
 .favourites {
@@ -55,10 +54,18 @@ localArr.value = getFavoritList()
   padding: 4px 8px;
   text-transform: uppercase;
   border: 1px solid #dedede;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.favourites:hover {
+  background-color: #ffffff;
+}
+
+.favoritContainer:hover .favoritList {
+  display: flex;
 }
 
 .favourites span {
@@ -83,6 +90,11 @@ localArr.value = getFavoritList()
   background-color: #ffffff;
   /* padding: 1rem; */
   font-size: 14px;
+  border: 1px solid #dedede;
+  border-top: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  display: none;
 }
 
 .favoritList .favoritItem {
