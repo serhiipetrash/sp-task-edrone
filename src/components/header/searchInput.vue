@@ -41,8 +41,8 @@ input[type='text'] {
   border: 1px solid #dedede;
   background-color: transparent;
   border-left: 0;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   padding: 6px 8px;
   /* font-size: 1rem; */
 }
@@ -54,7 +54,7 @@ input[type='text']:focus {
 .search-btn {
   cursor: pointer;
   border-right: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   padding-left: 1rem;

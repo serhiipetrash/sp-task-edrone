@@ -2,11 +2,9 @@ import { defineStore } from 'pinia';
 
 export const useCategory = defineStore('category', {
   state: () => ({
-    // urlCategorys: 'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
-    // cat: [],
-    // error: null,
     catFind: '',
     showCategory: true,
+    showFavorit: false,
   }),
   getters: {
     // toggleCategory: (state) => {
@@ -28,6 +26,9 @@ export const useCategory = defineStore('category', {
     toggleCategory() {
       this.showCategory = !this.showCategory;
     },
+    toggleFavorit() {
+      this.showFavorit = !this.showFavorit;
+    },
     findCategory(e) {
       const find = e.path.find((item) => {
         if (item.classList) {
@@ -36,7 +37,7 @@ export const useCategory = defineStore('category', {
           return false;
         }
       });
-      // console.log(find);
+
       if (find) {
         this.catFind = find.querySelector('span').innerText;
         console.log(this.catFind);
