@@ -21,10 +21,10 @@ single.getMealById()
       <h2>Ingredients + Measure</h2>
       <ul>
         <li v-for="ing in single.ingredients"> {{ ing }} </li>
-
-        <!-- <li> {{ single.meal.strIngredient3 }} </li> -->
-
       </ul>
+
+      <button class="close-btn" @click="single.showSingle = false">&times;</button>
+
     </div>
 
   </div>
@@ -52,6 +52,7 @@ single.getMealById()
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
+  position: relative
 }
 
 .single-meal-info h2:nth-child(3) {
@@ -79,5 +80,18 @@ single.getMealById()
   font-weight: bold;
   padding: 5px;
   margin: 0 5px 5px 0;
+}
+
+.single-meal-info .close-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  color: var(--color-text);
+  background-color: transparent;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 </style>

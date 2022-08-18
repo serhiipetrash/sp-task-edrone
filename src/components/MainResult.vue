@@ -44,7 +44,7 @@ search.myFetch(search.getURL)
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
 }
 

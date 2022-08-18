@@ -20,6 +20,7 @@ import MainResult from './MainResult.vue';
 .mainPage {
   display: flex;
   align-items: stretch;
+  overflow-x: hidden;
 
 }
 </style>
