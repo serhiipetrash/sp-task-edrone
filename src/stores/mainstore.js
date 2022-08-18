@@ -15,6 +15,7 @@ export const useStore = defineStore('main', {
     catList: [],
     areaList: [],
     tagsList: [],
+    favoritList: [],
   }),
   getters: {
     getURL: (state) => {
