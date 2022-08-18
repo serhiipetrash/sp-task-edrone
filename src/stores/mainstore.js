@@ -63,7 +63,6 @@ export const useStore = defineStore('main', {
           return item !== null;
         });
 
-        console.log(filterTagsList);
         //get unique tags list
         const uniqueTagsList = [...new Set(filterTagsList)];
         this.tagsList = [...uniqueTagsList];

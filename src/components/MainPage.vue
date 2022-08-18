@@ -3,6 +3,7 @@ import MainHeader from './MainHeader.vue'
 import MainCategory from './MainCategory.vue';
 import MainResult from './MainResult.vue';
 
+
 </script>
 
 <template>
@@ -18,5 +19,7 @@ import MainResult from './MainResult.vue';
 <style>
 .mainPage {
   display: flex;
+  align-items: stretch;
+
 }
 </style>

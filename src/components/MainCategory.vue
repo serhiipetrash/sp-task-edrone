@@ -8,7 +8,7 @@ const search = useStore()
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-show="catStore.showCategory">
 
     <div class="item-body">
       <h2 class="item-title">Category</h2>
@@ -49,9 +49,9 @@ const search = useStore()
 <style scoped>
 .container {
   width: 250px;
-  height: calc(100vh - 4rem);
   background-color: #b7b7b7;
   padding: 1rem;
+  transition: transform 0.3 ease;
 }
 
 .item-title {
@@ -79,5 +79,14 @@ const search = useStore()
   padding: 5px;
   margin: 0 5px 5px 0;
   cursor: pointer;
+}
+
+@media (max-width: 1177px) {
+  .container {
+    position: absolute;
+    z-index: 1;
+    /* display: none; */
+
+  }
 }
 </style>

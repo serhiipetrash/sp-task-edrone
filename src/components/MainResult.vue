@@ -37,7 +37,7 @@ search.myFetch(search.getURL)
 
 <style scoped>
 .container {
-  width: 100%;
+  margin: 0 auto;
 }
 
 .result {
@@ -46,5 +46,26 @@ search.myFetch(search.getURL)
   gap: 1.5rem;
   padding: 2rem;
   position: relative;
+}
+
+@media (min-width: 1360px) {
+  .result {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .result {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .result {
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
 }
 </style>

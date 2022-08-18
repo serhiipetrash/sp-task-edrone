@@ -6,8 +6,13 @@ export const useCategory = defineStore('category', {
     // cat: [],
     // error: null,
     catFind: '',
+    showCategory: true,
   }),
-  getters: {},
+  getters: {
+    // toggleCategory: (state) => {
+    //   return (state.showCategory = !state.showCategory);
+    // },
+  },
   actions: {
     // async fetchCategory() {
     //   const url = this.urlCategorys;
@@ -20,6 +25,9 @@ export const useCategory = defineStore('category', {
     //     this.error = err.message;
     //   }
     // },
+    toggleCategory() {
+      this.showCategory = !this.showCategory;
+    },
     findCategory(e) {
       const find = e.path.find((item) => {
         if (item.classList) {

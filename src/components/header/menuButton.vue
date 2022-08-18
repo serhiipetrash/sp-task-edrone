@@ -1,14 +1,16 @@
 <script setup>
 import menuIcon from '../icons/menuIcon.vue';
+import { useCategory } from '@/stores/category';
+const catStore = useCategory()
 </script>
 
 <template>
-<button class="menuButton">
-  <i>
-    <menuIcon />
-  </i>
+  <button class="menuButton" @click="catStore.toggleCategory">
+    <i>
+      <menuIcon />
+    </i>
 
-</button>
+  </button>
 
 </template>
 

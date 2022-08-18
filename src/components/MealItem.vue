@@ -23,7 +23,7 @@ defineProps({
   cursor: pointer;
   /* position: relative; */
   max-height: 340px;
-  width: 280px;
+  max-width: 280px;
   text-align: center;
   border: 1px solid #c6c6c6;
   border-radius: 8px;
@@ -42,5 +42,11 @@ defineProps({
 
 .meal span {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .meal {
+    max-width: 170px;
+  }
 }
 </style>
