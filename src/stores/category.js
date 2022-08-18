@@ -5,11 +5,7 @@ export const useCategory = defineStore('category', {
     catFind: '',
     showCategory: true,
   }),
-  getters: {
-    // toggleCategory: (state) => {
-    //   return (state.showCategory = !state.showCategory);
-    // },
-  },
+  getters: {},
   actions: {
     // async fetchCategory() {
     //   const url = this.urlCategorys;

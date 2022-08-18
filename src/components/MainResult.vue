@@ -2,18 +2,11 @@
 
 import MealItem from './MealItem.vue';
 import SingleMeal from './SingleMeal.vue';
-// import { useFetch } from './use/useFetch';
 
 import { useStore } from '../stores/mainstore';
 const search = useStore()
 
-
-// const startURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=Soup'
-
-// const { data, error } = useFetch(search.getURL)
-
 search.myFetch(search.getURL)
-
 
 </script>
 

@@ -2,7 +2,7 @@
 import FavouriteIcon from '../icons/favouriteIcon.vue';
 
 import { useStore } from '@/stores/mainstore';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 const search = useStore()
 const localArr = ref([])
 
@@ -25,7 +25,7 @@ localArr.value = getFavoritList()
         <FavouriteIcon />
       </i>
     </button>
-    <div class="favoritList">
+    <div class="favoritList" @click="search.favoritEl">
 
       <div class="favoritItem" v-for="item in localArr">
         <img :src="item.strMealThumb" alt="title">

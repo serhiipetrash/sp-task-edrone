@@ -6,6 +6,7 @@ export const useStore = defineStore('main', {
     posts: [],
     error: null,
     mealID: null,
+    favoritID: null,
     meal: [],
     ingredients: [],
     templateURL: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
@@ -110,6 +111,22 @@ export const useStore = defineStore('main', {
         this.getMealById(this.fullURL);
         // console.log(this.mealID);
         // console.log(this.fullURL);
+      }
+    },
+    favoritEl(e) {
+      // console.log(e);
+      this.showSingle = true;
+      const favoritInfo = e.path.find((item) => {
+        if (item.classList) {
+          return item.classList.contains('favoritItem');
+        } else {
+          return false;
+        }
+      });
+      if (favoritInfo) {
+        this.favoritID = favoritInfo.querySelector('span').innerText;
+        this.fullURL = this.templateURLid + this.favoritID;
+        this.getMealById(this.fullURL);
       }
     },
     getFavoritList() {
